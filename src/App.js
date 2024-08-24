@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, Button } from './components/ui';
 
 const products = [
-  { id: 1, name: 'Prodotto 1', price: 19.99, media: '/assets/IMG_0281', mediaType: 'image' },
+  { id: 1, name: 'Prodotto 1', price: 19.99, media: '/assets/IMG_0281.mov', mediaType: 'video' },
   { id: 2, name: 'Prodotto 2', price: 29.99, media: '/api/placeholder/400/300', mediaType: 'video' },
   { id: 3, name: 'Prodotto 3', price: 39.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 4, name: 'Prodotto 4', price: 49.99, media: '/api/placeholder/400/300', mediaType: 'video' },
