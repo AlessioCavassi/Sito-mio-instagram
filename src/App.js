@@ -12,29 +12,30 @@ const products = [
 ];
 
 const ProductCard = ({ product, onAddToCart }) => (
-  <Card className="m-2">
-    <CardHeader>
-      <CardTitle>{product.name}</CardTitle>
-    </CardHeader>
-    <CardContent>
-      {product.mediaType === 'image' ? (
-   <video 
-     src={product.media} 
-     className="w-full h-48 object-cover" 
-     controls 
-     crossOrigin="anonymous" 
-      ) : (
-        <video src={product.media} className="w-full h-48 object-cover" controls />
-      )}
-      <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
-    </CardContent>
-    <CardFooter>
-      <Button onClick={() => onAddToCart(product)}>
-        Aggiungi al carrello
-      </Button>
-    </CardFooter>
-  </Card>
-);
+        <Card className="m-2">
+          <CardHeader>
+            <CardTitle>{product.name}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {product.mediaType === 'video' ? (
+              <ReactPlayer 
+                url={product.media} 
+                width="100%"
+                height="192px"
+                controls={true}
+              />
+            ) : (
+              <img src={product.media} alt={product.name} className="w-full h-48 object-cover" />
+            )}
+            <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
+          </CardContent>
+          <CardFooter>
+            <Button onClick={() => onAddToCart(product)}>
+              Aggiungi al carrello
+            </Button>
+          </CardFooter>
+        </Card>
+      );
 
 const ShoppingCart = ({ cartItems, onRemoveFromCart }) => (
   <div className="mt-8">
