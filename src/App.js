@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, Button } from './components/ui';
-import ReactPlayer from 'react-player;
-  
+import ReactPlayer from 'react-player';
+
 const products = [
   { id: 1, name: 'Prodotto 1', price: 19.99, media: '/assets/IMG_0404.mp4', mediaType: 'video' },
   { id: 2, name: 'Prodotto 2', price: 29.99, media: '/assets/IMG_0302.mov', mediaType: 'video' },
@@ -12,30 +12,30 @@ const products = [
 ];
 
 const ProductCard = ({ product, onAddToCart }) => (
-        <Card className="m-2">
-          <CardHeader>
-            <CardTitle>{product.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {product.mediaType === 'video' ? (
-              <ReactPlayer 
-                url={product.media} 
-                width="100%"
-                height="192px"
-                controls={true}
-              />
-            ) : (
-              <img src={product.media} alt={product.name} className="w-full h-48 object-cover" />
-            )}
-            <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
-          </CardContent>
-          <CardFooter>
-            <Button onClick={() => onAddToCart(product)}>
-              Aggiungi al carrello
-            </Button>
-          </CardFooter>
-        </Card>
-      );
+  <Card className="m-2">
+    <CardHeader>
+      <CardTitle>{product.name}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      {product.mediaType === 'video' ? (
+        <ReactPlayer 
+          url={product.media} 
+          width="100%"
+          height="192px"
+          controls={true}
+        />
+      ) : (
+        <img src={product.media} alt={product.name} className="w-full h-48 object-cover" />
+      )}
+      <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
+    </CardContent>
+    <CardFooter>
+      <Button onClick={() => onAddToCart(product)}>
+        Aggiungi al carrello
+      </Button>
+    </CardFooter>
+  </Card>
+);
 
 const ShoppingCart = ({ cartItems, onRemoveFromCart }) => (
   <div className="mt-8">
