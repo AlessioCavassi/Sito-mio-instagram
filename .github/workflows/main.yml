@@ -19,14 +19,27 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-    - name: Install dependencies and create package-lock.json
+    - name: Debug and Install dependencies
       run: |
+        pwd
+        ls -la
+        npm --version
+        node --version
         npm install
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add package-lock.json
-        git commit -m "Add package-lock.json" || echo "No changes to commit"
-        git push
+        ls -la
+    - name: Check for package-lock.json
+      run: |
+        if [ -f "package-lock.json" ]; then
+          echo "package-lock.json exists"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add package-lock.json
+          git commit -m "Add package-lock.json" || echo "No changes to commit"
+          git push
+        else
+          echo "package-lock.json does not exist"
+          exit 1
+        fi
     - name: Build
       run: npm run build
     - name: Deploy to GitHub Pages
