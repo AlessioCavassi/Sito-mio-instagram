@@ -17,7 +17,11 @@ const ProductCard = ({ product, onAddToCart }) => (
     </CardHeader>
     <CardContent>
       {product.mediaType === 'image' ? (
-        <img src={product.media} alt={product.name} className="w-full h-48 object-cover" />
+   <video 
+     src={product.media} 
+     className="w-full h-48 object-cover" 
+     controls 
+     crossOrigin="anonymous" 
       ) : (
         <video src={product.media} className="w-full h-48 object-cover" controls />
       )}
