@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, Button } from './components/ui';
-
+import ReactPlayer from 'react-player;
+  
 const products = [
   { id: 1, name: 'Prodotto 1', price: 19.99, media: '/assets/IMG_0404.mp4', mediaType: 'video' },
   { id: 2, name: 'Prodotto 2', price: 29.99, media: '/assets/IMG_0302.mov', mediaType: 'video' },
