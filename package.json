@@ -12,6 +12,9 @@
     "postcss": "^8.4.21",
     "autoprefixer": "^10.4.14"
   },
+     "devDependencies": {
+     "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
+   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
