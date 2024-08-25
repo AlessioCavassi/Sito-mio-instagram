@@ -1,41 +1,13 @@
 {
   "files": {
     "main.css": "/Sito-mio-instagram/static/css/main.bd3a1e7a.css",
-    "main.js": "/Sito-mio-instagram/static/js/main.3c191718.js",
-    "reactPlayerYouTube.js": "/Sito-mio-instagram/static/js/reactPlayerYouTube.20381a14.chunk.js",
-    "reactPlayerSoundCloud.js": "/Sito-mio-instagram/static/js/reactPlayerSoundCloud.809ce513.chunk.js",
-    "reactPlayerVimeo.js": "/Sito-mio-instagram/static/js/reactPlayerVimeo.840defcb.chunk.js",
-    "reactPlayerMux.js": "/Sito-mio-instagram/static/js/reactPlayerMux.16f040e9.chunk.js",
-    "reactPlayerFacebook.js": "/Sito-mio-instagram/static/js/reactPlayerFacebook.fd1ad54a.chunk.js",
-    "reactPlayerStreamable.js": "/Sito-mio-instagram/static/js/reactPlayerStreamable.c675b0ec.chunk.js",
-    "reactPlayerWistia.js": "/Sito-mio-instagram/static/js/reactPlayerWistia.b4bc05ce.chunk.js",
-    "reactPlayerTwitch.js": "/Sito-mio-instagram/static/js/reactPlayerTwitch.84ee32ea.chunk.js",
-    "reactPlayerDailyMotion.js": "/Sito-mio-instagram/static/js/reactPlayerDailyMotion.fb75a54c.chunk.js",
-    "reactPlayerMixcloud.js": "/Sito-mio-instagram/static/js/reactPlayerMixcloud.228c4163.chunk.js",
-    "reactPlayerVidyard.js": "/Sito-mio-instagram/static/js/reactPlayerVidyard.1147e560.chunk.js",
-    "reactPlayerKaltura.js": "/Sito-mio-instagram/static/js/reactPlayerKaltura.aca3dd26.chunk.js",
-    "reactPlayerFilePlayer.js": "/Sito-mio-instagram/static/js/reactPlayerFilePlayer.41af1c1b.chunk.js",
-    "reactPlayerPreview.js": "/Sito-mio-instagram/static/js/reactPlayerPreview.3a5a2807.chunk.js",
+    "main.js": "/Sito-mio-instagram/static/js/main.4596b462.js",
     "index.html": "/Sito-mio-instagram/index.html",
     "main.bd3a1e7a.css.map": "/Sito-mio-instagram/static/css/main.bd3a1e7a.css.map",
-    "main.3c191718.js.map": "/Sito-mio-instagram/static/js/main.3c191718.js.map",
-    "reactPlayerYouTube.20381a14.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerYouTube.20381a14.chunk.js.map",
-    "reactPlayerSoundCloud.809ce513.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerSoundCloud.809ce513.chunk.js.map",
-    "reactPlayerVimeo.840defcb.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerVimeo.840defcb.chunk.js.map",
-    "reactPlayerMux.16f040e9.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerMux.16f040e9.chunk.js.map",
-    "reactPlayerFacebook.fd1ad54a.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerFacebook.fd1ad54a.chunk.js.map",
-    "reactPlayerStreamable.c675b0ec.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerStreamable.c675b0ec.chunk.js.map",
-    "reactPlayerWistia.b4bc05ce.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerWistia.b4bc05ce.chunk.js.map",
-    "reactPlayerTwitch.84ee32ea.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerTwitch.84ee32ea.chunk.js.map",
-    "reactPlayerDailyMotion.fb75a54c.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerDailyMotion.fb75a54c.chunk.js.map",
-    "reactPlayerMixcloud.228c4163.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerMixcloud.228c4163.chunk.js.map",
-    "reactPlayerVidyard.1147e560.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerVidyard.1147e560.chunk.js.map",
-    "reactPlayerKaltura.aca3dd26.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerKaltura.aca3dd26.chunk.js.map",
-    "reactPlayerFilePlayer.41af1c1b.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerFilePlayer.41af1c1b.chunk.js.map",
-    "reactPlayerPreview.3a5a2807.chunk.js.map": "/Sito-mio-instagram/static/js/reactPlayerPreview.3a5a2807.chunk.js.map"
+    "main.4596b462.js.map": "/Sito-mio-instagram/static/js/main.4596b462.js.map"
   },
   "entrypoints": [
     "static/css/main.bd3a1e7a.css",
-    "static/js/main.3c191718.js"
+    "static/js/main.4596b462.js"
   ]
 }
