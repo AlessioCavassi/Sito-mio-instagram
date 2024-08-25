@@ -11,16 +11,17 @@ const products = [
   { id: 6, name: 'Prodotto 6', price: 69.99, media: '/api/placeholder/400/300', mediaType: 'image' },
 ];
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart, addLog }) => {
   const [videoError, setVideoError] = useState(null);
 
   useEffect(() => {
-    console.log(`Rendering product: ${product.name}, Media: ${product.media}`);
-  }, [product]);
+    addLog(`Rendering product: ${product.name}, Media: ${product.media}`);
+  }, [product, addLog]);
 
   const handleVideoError = (e) => {
-    console.error(`Error loading video for ${product.name}:`, e);
-    setVideoError(e.message);
+    const errorMessage = `Error loading video for ${product.name}: ${e.message}`;
+    addLog(errorMessage);
+    setVideoError(errorMessage);
   };
 
   return (
@@ -37,7 +38,7 @@ const ProductCard = ({ product, onAddToCart }) => {
               height="192px"
               controls={true}
               onError={handleVideoError}
-              onReady={() => console.log(`Video ready: ${product.name}`)}
+              onReady={() => addLog(`Video ready: ${product.name}`)}
               config={{ file: { 
                 attributes: {
                   crossOrigin: "anonymous"
@@ -51,7 +52,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             src={product.media} 
             alt={product.name} 
             className="w-full h-48 object-cover" 
-            onError={(e) => console.error(`Error loading image for ${product.name}:`, e)}
+            onError={(e) => addLog(`Error loading image for ${product.name}: ${e.message}`)}
           />
         )}
         <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
@@ -93,19 +94,24 @@ const ShoppingCart = ({ cartItems, onRemoveFromCart }) => (
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [logs, setLogs] = useState([]);
+
+  const addLog = (message) => {
+    setLogs(prevLogs => [...prevLogs, `${new Date().toISOString()}: ${message}`]);
+  };
 
   useEffect(() => {
-    console.log('App component mounted');
-    console.log('Products:', products);
+    addLog('App component mounted');
+    addLog(`Products loaded: ${products.length}`);
   }, []);
 
   const addToCart = (product) => {
-    console.log('Adding to cart:', product);
+    addLog(`Adding to cart: ${product.name}`);
     setCartItems([...cartItems, product]);
   };
 
   const removeFromCart = (product) => {
-    console.log('Removing from cart:', product);
+    addLog(`Removing from cart: ${product.name}`);
     setCartItems(cartItems.filter((item) => item.id !== product.id));
   };
 
@@ -114,10 +120,23 @@ function App() {
       <h1 className="text-3xl font-bold mb-8">Il nostro Ecommerce</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+          <ProductCard key={product.id} product={product} onAddToCart={addToCart} addLog={addLog} />
         ))}
       </div>
       <ShoppingCart cartItems={cartItems} onRemoveFromCart={removeFromCart} />
+      
+      <div className="mt-8 p-4 bg-gray-100 rounded">
+        <h2 className="text-xl font-bold mb-2">Debug Logs:</h2>
+        <button 
+          onClick={() => setLogs([])} 
+          className="mb-2 bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+        >
+          Clear Logs
+        </button>
+        {logs.map((log, index) => (
+          <p key={index} className="text-sm">{log}</p>
+        ))}
+      </div>
     </div>
   );
 }
