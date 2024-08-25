@@ -4,7 +4,8 @@ import ReactPlayer from 'react-player';
 
 const products = [
   { id: 1, name: 'Prodotto 1', price: 19.99, media: '/Sito-mio-instagram/assets/IMG_0404.mp4', mediaType: 'video' },
-  { id: 2, name: 'Prodotto 2', price: 29.99, media: '/Sito-mio-instagram/assets/IMG_0302.mov', mediaType: 'video' },  { id: 3, name: 'Prodotto 3', price: 39.99, media: '/api/placeholder/400/300', mediaType: 'image' },
+  { id: 2, name: 'Prodotto 2', price: 29.99, media: '/Sito-mio-instagram/assets/IMG_0302.mov', mediaType: 'video' },
+  { id: 3, name: 'Prodotto 3', price: 39.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 4, name: 'Prodotto 4', price: 49.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 5, name: 'Prodotto 5', price: 59.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 6, name: 'Prodotto 6', price: 69.99, media: '/api/placeholder/400/300', mediaType: 'image' },
@@ -17,11 +18,12 @@ const ProductCard = ({ product, onAddToCart, addLog }) => {
     addLog(`Rendering product: ${product.name}, Media: ${product.media}`);
   }, [product, addLog]);
 
-     const handleVideoError = (e) => {
-     const errorMessage = `Error loading video for ${product.name}: ${e.toString()}`;
-     addLog(errorMessage);
-     setVideoError(errorMessage);
-     console.error(errorMessage, e);
+  const handleVideoError = (e) => {
+    const errorMessage = `Error loading video for ${product.name}: ${e.toString()}`;
+    addLog(errorMessage);
+    setVideoError(errorMessage);
+    console.error(errorMessage, e);
+  };
 
   return (
     <Card className="m-2">
@@ -37,7 +39,7 @@ const ProductCard = ({ product, onAddToCart, addLog }) => {
               height="192px"
               controls={true}
               onError={handleVideoError}
-              onReady={() => addLog(`Video ready: ${product.name}`)}
+              onReady={() => addLog(`Video successfully loaded: ${product.name}`)}
               config={{ file: { 
                 attributes: {
                   crossOrigin: "anonymous"
