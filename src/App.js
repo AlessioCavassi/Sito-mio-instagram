@@ -3,8 +3,8 @@ import { Card, CardHeader, CardContent, CardFooter, CardTitle, Button } from './
 import ReactPlayer from 'react-player';
 
 const products = [
-  { id: 1, name: 'Prodotto 1', price: 19.99, media: '/Sito-mio-instagram/assets/IMG_0404.mp4', mediaType: 'video' },
-  { id: 2, name: 'Prodotto 2', price: 29.99, media: '/Sito-mio-instagram/assets/IMG_0302.mov', mediaType: 'video' },
+  { id: 1, name: 'Prodotto 1', price: 19.99, media: 'https://alessiocavassi.github.io/Sito-mio-instagram/assets/IMG_0404.mp4', mediaType: 'video' },
+  { id: 2, name: 'Prodotto 2', price: 29.99, media: 'https://alessiocavassi.github.io/Sito-mio-instagram/assets/IMG_0302.mp4', mediaType: 'video' },
   { id: 3, name: 'Prodotto 3', price: 39.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 4, name: 'Prodotto 4', price: 49.99, media: '/api/placeholder/400/300', mediaType: 'image' },
   { id: 5, name: 'Prodotto 5', price: 59.99, media: '/api/placeholder/400/300', mediaType: 'image' },
@@ -19,10 +19,10 @@ const ProductCard = ({ product, onAddToCart, addLog }) => {
   }, [product, addLog]);
 
   const handleVideoError = (e) => {
-    const errorMessage = `Error loading video for ${product.name}: ${e.toString()}`;
+    const errorMessage = `Error loading video for ${product.name}: ${e.type} - ${e.message || 'Unknown error'}`;
     addLog(errorMessage);
     setVideoError(errorMessage);
-    console.error(errorMessage, e);
+    console.error('Video error details:', e);
   };
 
   return (
@@ -40,11 +40,14 @@ const ProductCard = ({ product, onAddToCart, addLog }) => {
               controls={true}
               onError={handleVideoError}
               onReady={() => addLog(`Video successfully loaded: ${product.name}`)}
-              config={{ file: { 
-                attributes: {
-                  crossOrigin: "anonymous"
+              config={{ 
+                file: { 
+                  attributes: {
+                    crossOrigin: "anonymous"
+                  },
+                  forceVideo: true
                 }
-              }}}
+              }}
             />
             {videoError && <p className="text-red-500">Error: {videoError}</p>}
           </>
