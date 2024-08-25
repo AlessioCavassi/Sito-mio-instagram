@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, Button } from './components/ui';
 import ReactPlayer from 'react-player';
 
@@ -11,31 +11,59 @@ const products = [
   { id: 6, name: 'Prodotto 6', price: 69.99, media: '/api/placeholder/400/300', mediaType: 'image' },
 ];
 
-const ProductCard = ({ product, onAddToCart }) => (
-  <Card className="m-2">
-    <CardHeader>
-      <CardTitle>{product.name}</CardTitle>
-    </CardHeader>
-    <CardContent>
-      {product.mediaType === 'video' ? (
-        <ReactPlayer 
-          url={product.media} 
-          width="100%"
-          height="192px"
-          controls={true}
-        />
-      ) : (
-        <img src={product.media} alt={product.name} className="w-full h-48 object-cover" />
-      )}
-      <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
-    </CardContent>
-    <CardFooter>
-      <Button onClick={() => onAddToCart(product)}>
-        Aggiungi al carrello
-      </Button>
-    </CardFooter>
-  </Card>
-);
+const ProductCard = ({ product, onAddToCart }) => {
+  const [videoError, setVideoError] = useState(null);
+
+  useEffect(() => {
+    console.log(`Rendering product: ${product.name}, Media: ${product.media}`);
+  }, [product]);
+
+  const handleVideoError = (e) => {
+    console.error(`Error loading video for ${product.name}:`, e);
+    setVideoError(e.message);
+  };
+
+  return (
+    <Card className="m-2">
+      <CardHeader>
+        <CardTitle>{product.name}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {product.mediaType === 'video' ? (
+          <>
+            <ReactPlayer 
+              url={product.media} 
+              width="100%"
+              height="192px"
+              controls={true}
+              onError={handleVideoError}
+              onReady={() => console.log(`Video ready: ${product.name}`)}
+              config={{ file: { 
+                attributes: {
+                  crossOrigin: "anonymous"
+                }
+              }}}
+            />
+            {videoError && <p className="text-red-500">Error: {videoError}</p>}
+          </>
+        ) : (
+          <img 
+            src={product.media} 
+            alt={product.name} 
+            className="w-full h-48 object-cover" 
+            onError={(e) => console.error(`Error loading image for ${product.name}:`, e)}
+          />
+        )}
+        <p className="mt-2 text-lg font-bold">${product.price.toFixed(2)}</p>
+      </CardContent>
+      <CardFooter>
+        <Button onClick={() => onAddToCart(product)}>
+          Aggiungi al carrello
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
 
 const ShoppingCart = ({ cartItems, onRemoveFromCart }) => (
   <div className="mt-8">
@@ -66,11 +94,18 @@ const ShoppingCart = ({ cartItems, onRemoveFromCart }) => (
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
+  useEffect(() => {
+    console.log('App component mounted');
+    console.log('Products:', products);
+  }, []);
+
   const addToCart = (product) => {
+    console.log('Adding to cart:', product);
     setCartItems([...cartItems, product]);
   };
 
   const removeFromCart = (product) => {
+    console.log('Removing from cart:', product);
     setCartItems(cartItems.filter((item) => item.id !== product.id));
   };
 
